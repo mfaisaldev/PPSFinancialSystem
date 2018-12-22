@@ -1,0 +1,188 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchStock.aspx.cs" Inherits="SearchStock" %>
+
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>Searching Stock Page</title>
+    <link href="css\default.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript">
+
+        function SelectAll(id) {
+            var frm = document.forms[0];
+
+            for (i = 0; i < frm.elements.length; i++) {
+                if (frm.elements[i].type == "checkbox") {
+                    frm.elements[i].checked = document.getElementById(id).checked;
+                }
+            }
+        }  
+
+
+    </script>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager runat="server" ID="ScrptManager"></asp:ScriptManager>
+    <div>
+        <div id="header">
+        Searching Stocks
+        </div>
+        
+        <div id="errormessage">
+            <asp:Label ID="lblErrorMessage" runat="server" ></asp:Label>
+        </div>
+        
+        <div id="searchbox">
+            <table>
+                <tr>
+                    <td>
+                        Item Code :
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtItemCode" runat="server" ></asp:TextBox>
+                        <cc1:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" MinimumPrefixLength="1" ServiceMethod="GetItemCodes" ServicePath="WebService.asmx" TargetControlID="txtItemCode"> </cc1:AutoCompleteExtender>                                                
+                        <asp:TextBox ID="txtSearch" runat="server" Visible="false"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Item Name :
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtItemName" runat="server" ></asp:TextBox>
+                        <cc1:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" MinimumPrefixLength="1" ServiceMethod="GetItemNames" ServicePath="WebService.asmx" TargetControlID="txtItemName"> </cc1:AutoCompleteExtender>                                                
+                    </td>
+                </tr>
+                <tr>
+                    <td></td><td>                        
+                        <asp:CheckBox ID="chkSize" runat="server" Text="Check to add Size"/>                        
+                        <asp:TextBox ID="txtItemSize" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Item Made By :
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtMadeBy" runat="server" ></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="ChkQtyLessTen" runat="server" Text="Only Items by Quantity less than 10"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="ChkQtyLessFive" runat="server" Text="Only Items by Quantity less than 5"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Date :
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtDate" runat="server" ></asp:TextBox>
+                        <cc1:CalendarExtender ID="txtDate_CalendarExtender" runat="server" 
+                            TargetControlID="txtDate">
+                        </cc1:CalendarExtender>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <asp:Button ID="btnSearch" runat="server" Width="100px" Text="Search" 
+                            onclick="btnSearch_Click"/>                    
+                    </td>
+                </tr>                       
+            </table>
+            
+        </div>                
+        <div id="gridview" style="height:auto;">
+        <br />
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+                DataSourceID="SqlDataSource1" AllowPaging="True" 
+                AllowSorting="True" 
+                onRowDataBound="GridView1_RowDataBound" 
+                OnRowCreated="GridView1_OnRowCreated" width="100%" 
+                DataKeyNames="ItemDetailID" >
+                <Columns>                                     
+                    <asp:BoundField DataField="ItemDetailID" HeaderText="ItemDetailID" 
+                        InsertVisible="False" ReadOnly="True" SortExpression="ItemDetailID" />
+                    <asp:TemplateField>
+
+                    <ItemTemplate>
+
+                        <asp:CheckBox ID="CheckBox1" runat="server" />
+
+                    </ItemTemplate>
+
+                    <HeaderTemplate>
+
+                        <asp:CheckBox ID="cbSelectAll" runat="server" Text="" OnClick="selectAll(this)" />
+
+                    </HeaderTemplate>
+
+                    <HeaderStyle HorizontalAlign="Left" />
+
+                    <ItemStyle HorizontalAlign="Left" />
+
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="ItemCode" HeaderText="ItemCode" 
+                        SortExpression="ItemCode" />
+                    <asp:BoundField DataField="ItemName" HeaderText="ItemName" 
+                        SortExpression="ItemName" />
+                    <asp:BoundField DataField="IDate" HeaderText="Date" 
+                        SortExpression="IDate" ReadOnly="True" />                    
+                    <asp:BoundField DataField="ItemSize" HeaderText="ItemSize" 
+                        SortExpression="ItemSize" />
+                    <asp:BoundField DataField="Color" HeaderText="Color" 
+                        SortExpression="Color" />
+                    <asp:BoundField DataField="Make" HeaderText="Make" 
+                        SortExpression="Make" />
+                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" 
+                        SortExpression="Quantity" />                    
+                    <asp:BoundField DataField="UnitPrice" HeaderText="UnitPrice" 
+                        SortExpression="UnitPrice" />
+                    <asp:BoundField DataField="ItemAmount" HeaderText="ItemAmount" ReadOnly="True" 
+                        SortExpression="ItemAmount" />
+                    <asp:BoundField DataField="SellingPrice" HeaderText="SellingPrice" 
+                        SortExpression="SellingPrice" />
+                    <asp:HyperLinkField DataNavigateUrlFields="ItemDetailID" DataNavigateUrlFormatString="ManageStock.aspx?ItemDetailID={0}"
+                            NavigateUrl="ManageStock.aspx" Text="Edit" HeaderText="Edit" ControlStyle-ForeColor="White" ControlStyle-Font-Bold="true"/>                       
+                    
+                </Columns>
+                <!--#include virtual="GridSetting.html"-->
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:PPSConnectionString %>" 
+                SelectCommand="pcsn_GetStockDetailBySearch" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="txtSearch" 
+                        DefaultValue="[StockMaster].[ID] &gt; 0" Name="Search" 
+                        PropertyName="Text" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            <br /><hr /><br />
+            
+            <div id="lowerbuttons">
+                <asp:Button ID="btnprintOrder" runat="server" Text="Mark as Pending" Width="150px"/>
+                <asp:Button ID="btncancelOrder" runat="server" Text="Cancel" Width="80px"/>
+                 
+            </div> 
+         </div><!-- End datagrid -->
+         
+    </div>
+    </form>
+</body>
+</html>

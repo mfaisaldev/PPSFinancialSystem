@@ -1,0 +1,55 @@
+Definitions
+
+WEB
+-------
+Web is a display of any Company, industary, group or individual. In a display you shows the product you are making or selling,
+the product you wants to buy, or any information you wants to share with viewers to get their attention.
+It is used for sharing information world wide. Right now we are using WEB for many purpose like Shopping,
+Business, Banking, Entertainment, providing services, making friends, this and that.
+
+Web Address
+-----------
+A web address must be unique, there can not be two companies with same name. Basically a Web address is your URL
+(Universal Resource Locator). A URL looks like "http://www.Kiko.com". 
+While "Http" is a Protocol "and www.Kiko.com" is the actuall 
+address. A protocol defines the way you talk and other understands it. 
+So there are many countries and many people and they use many languages, Now if everybody speaks his own language with eachother
+people will hardly understand eachother. Like I speaks Urdu, You Speaks English.. if we talk in our languages with eachother we will not understand eachother
+So we use a standard which is "ENGLISH". And thats how our communcation is being done.
+Protocol is as same as communication Standard.
+So the "Http" is Protocol and the remaining part is your Actuall Address..
+well actually www.Kiko.com is what you see.. but your actuall address is somthing else behind it. 
+lets say... dont worry about it now.. because its all math lol.. just fo ease of use we named it as we want
+like www.faisal.com, www.Kiko.com, www.SaraMilko.com
+well we are human but have different names. so is WEB.
+
+Now you understands a WEB, The Web Address, URL, and Protocol. We will come to those back in detail if neccessary.
+
+OK.. for Making a Web you need a Language to talk to computer so Mr Computer can make a Web for you to see.
+Computer understands many languages as we do. 
+A language called "HTML" is used for Making a simple WEB.
+
+HTML
+----
+HTML (Hyper Text Mark-up Language) is used for making Web. Its a basic language and is as simple as english.
+Using this Language we can creat e a web easily.
+OK Eevery language has some Syntax and Semantic.
+Like in English any word Like ( YOU, ME, HIM, HER, This, What, Hello, Love, Hate and whole english 
+contains Syntax.. ok so English is made of Syntax. Now using Syntax you can create a Sentense. like 
+I am Working Now. Now they way you created a sentense is Semantic. You can not say it like "Working am Now I"
+so the semantic is to represent the syntax in a way that it will make sense to everyone.
+
+Ok before I go any further I will tell you what things will u be requiring to Develop a WEB.
+1. NOTEPAD
+2. Web Browser
+
+hmmmmm... ok I will email you next time about HTML tomorw ok sweetheart. 
+Please go through this notes over n over till  understands or memorize the term i explained you.
+well No worries too much you... 
+and YES.. always Ask Questions ok... teacher love the student who ask questions ok.. 
+but no irrelevant questions ok sweety lol.. 
+
+ok Love u.. Miss u
+tell ur mama I love her.. miss her.. talk to her soon.. lotsa love 
+ur Teacher lol
+See yaa mmmmmmmmmmuah
